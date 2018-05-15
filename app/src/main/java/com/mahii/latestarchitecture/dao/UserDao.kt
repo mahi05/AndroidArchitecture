@@ -37,4 +37,7 @@ interface UserDao {
     @Query("SELECT * from user_data ORDER BY id ASC")
     fun getAllUsers(): LiveData<List<User>>
 
+    @Query("DELETE FROM user_data")
+    fun clearTable()
+
 }
