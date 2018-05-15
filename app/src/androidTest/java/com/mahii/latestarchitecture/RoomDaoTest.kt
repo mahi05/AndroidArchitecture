@@ -58,5 +58,4 @@ class RoomDaoTest {
         assert(userRoomDatabase.userDao().getAllUsersOld().isEmpty())
     }
 
-
 }
