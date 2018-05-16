@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">LatestArchitecture</string>
+    <string name="app_name">Android Architecture</string>
     <string name="name">Name</string>
     <string name="designation">Designation</string>
     <string name="save">Save</string>
+    <string name="sort_by_name">Sort by Name</string>
+    <string name="sort_by_designation">Sort by Designation</string>
+    <string name="sort_by_id">Sort by Id</string>
 </resources>

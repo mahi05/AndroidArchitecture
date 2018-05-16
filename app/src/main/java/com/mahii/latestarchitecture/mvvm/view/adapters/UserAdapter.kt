@@ -1,10 +1,12 @@
 package com.mahii.latestarchitecture.mvvm.view.adapters
 
 import android.databinding.DataBindingUtil
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mahii.latestarchitecture.R
+import com.mahii.latestarchitecture.data.UserDiffCallback
 import com.mahii.latestarchitecture.databinding.ItemUserBinding
 import com.mahii.latestarchitecture.mvvm.model.User
 
@@ -39,6 +41,15 @@ class UserAdapter constructor(private val usersList: ArrayList<User>) : Recycler
         usersList.clear()
         usersList.addAll(data)
         notifyDataSetChanged()
+    }
+
+    fun swap(users: List<User>) {
+        val diffCallback = UserDiffCallback(this.usersList, users)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+
+        this.usersList.clear()
+        this.usersList.addAll(users)
+        diffResult.dispatchUpdatesTo(this)
     }
 
 }

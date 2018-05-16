@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.mahii.latestarchitecture.R
 import com.mahii.latestarchitecture.dao.UserRoomDatabase
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity()/*, Observer*/ {
     private var mDB: UserRoomDatabase? = null
 
     private lateinit var users: ArrayList<User>
+    private lateinit var userAdapter: UserAdapter
 
     //private lateinit var userViewModel: UserViewModelOld
     private lateinit var mUserViewModel: UserViewModel
@@ -44,7 +47,7 @@ class MainActivity : AppCompatActivity()/*, Observer*/ {
         //activityMainBinding.userViewModel = mUserViewModel
 
         users = ArrayList()
-        val userAdapter = UserAdapter(users)
+        userAdapter = UserAdapter(users)
         activityMainBinding.userList.apply {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -100,5 +103,37 @@ class MainActivity : AppCompatActivity()/*, Observer*/ {
             userAdapter.setData(o.users)
         }
     }*/
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.sort_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.sort_by_name -> {
+                userAdapter.swap(usersSortedByName)
+                true
+            }
+            R.id.sort_by_designation -> {
+                userAdapter.swap(usersSortedByDesignation)
+                true
+            }
+            R.id.sort_by_id -> {
+                userAdapter.swap(usersSortedById)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private val usersSortedById: List<User>
+        get() = users.sortedByDescending { it.id }
+
+    private val usersSortedByName: List<User>
+        get() = users.sortedBy { it.name }
+
+    private val usersSortedByDesignation: List<User>
+        get() = users.sortedBy { it.designation }
 
 }
