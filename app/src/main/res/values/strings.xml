@@ -5,5 +5,6 @@
     <string name="save">Save</string>
     <string name="sort_by_name">Sort by Name</string>
     <string name="sort_by_designation">Sort by Designation</string>
-    <string name="sort_by_id">Sort by Id</string>
+    <string name="sort_by_desc">Sort by Descending</string>
+    <string name="sort_by_asc">Sort by Ascending</string>
 </resources>

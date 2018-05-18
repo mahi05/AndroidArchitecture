@@ -10,7 +10,11 @@
         android:title="@string/sort_by_designation" />
 
     <item
-        android:id="@+id/sort_by_id"
-        android:title="@string/sort_by_id" />
+        android:id="@+id/sort_by_descending"
+        android:title="@string/sort_by_desc" />
+
+    <item
+        android:id="@+id/sort_by_ascending"
+        android:title="@string/sort_by_asc" />
 
 </menu>
